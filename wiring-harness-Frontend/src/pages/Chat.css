@@ -1,0 +1,302 @@
+.chat-page {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  background: var(--page-gradient);
+  overflow: hidden;
+}
+
+/* subtle graph-paper grid overlay, matching the reference mock */
+.chat-page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 80% 65% at 50% 20%, #000 40%, transparent 90%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 65% at 50% 20%, #000 40%, transparent 90%);
+}
+
+/* Main area */
+.main {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  flex-shrink: 0;
+}
+
+/* Minimal "new conversation" pill, top-left */
+.new-thread-pill {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  border: none;
+  background: var(--accent-dark);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.1px;
+  padding: 9px 16px 9px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: var(--card-shadow-soft);
+  transition: background 0.18s ease, transform 0.12s ease, box-shadow 0.18s ease;
+}
+
+.new-thread-pill svg {
+  flex-shrink: 0;
+}
+
+.new-thread-pill:hover {
+  background: var(--accent-dark-hover);
+  box-shadow: var(--card-shadow);
+  transform: translateY(-1px);
+}
+
+.new-thread-pill:active {
+  transform: translateY(0);
+}
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: var(--btn-bg);
+  backdrop-filter: blur(8px);
+  color: var(--text);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: var(--card-shadow-soft);
+  transition: background 0.18s ease, transform 0.12s ease;
+}
+
+.theme-toggle:hover {
+  background: var(--btn-bg-hover);
+  transform: translateY(-1px);
+}
+
+/* Landing */
+.landing {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  padding: 0 24px;
+}
+
+.landing h1 {
+  color: var(--text);
+  font-size: 30px;
+  font-weight: 650;
+  letter-spacing: -0.3px;
+  text-align: center;
+}
+
+.message-list {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.message-list::-webkit-scrollbar {
+  display: none;
+}
+
+.message-list-inner {
+  padding: 12px 20% 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-top: auto;
+}
+
+@media (max-width: 900px) {
+  .message-list-inner {
+    padding: 12px 6% 24px;
+  }
+}
+
+.input-area {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--bg-soft);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--border);
+  border-radius: 26px;
+  padding: 12px 14px 12px 16px;
+  width: 60%;
+  max-width: 700px;
+  box-shadow: var(--card-shadow);
+}
+
+.landing .input-area {
+  align-self: center;
+}
+
+.main > .input-area {
+  align-self: center;
+  margin-bottom: 28px;
+}
+
+.input-area textarea {
+  flex: 1;
+  border: none;
+  background: transparent;
+  resize: none;
+  outline: none;
+  font-size: 15px;
+  font-family: inherit;
+  color: var(--text);
+  max-height: 120px;
+}
+
+.input-area textarea::placeholder {
+  color: #9a9aa8;
+}
+
+.typing {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  padding: 16px 18px;
+}
+
+.typing span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--text);
+  opacity: 0.5;
+  animation: blink 1.2s infinite;
+}
+
+.typing span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes blink {
+  0%, 80%, 100% { opacity: 0.3; }
+  40% { opacity: 1; }
+}
+
+.message {
+  display: flex;
+}
+
+.message.user {
+  justify-content: flex-end;
+}
+
+.message.assistant {
+  justify-content: flex-start;
+}
+
+.bubble {
+  max-width: 68%;
+  padding: 14px 18px;
+  line-height: 1.5;
+  font-size: 15px;
+}
+
+.message.user .bubble {
+  background: linear-gradient(135deg, #3a72c4, var(--accent-blue));
+  color: #FFFFFF;
+  border-radius: 22px;
+  border-bottom-right-radius: 6px;
+  box-shadow: 0 6px 18px rgba(43, 99, 182, 0.28);
+}
+
+.message.assistant .bubble {
+  background: var(--bg-soft);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  color: var(--text);
+  border-radius: 22px;
+  border-bottom-left-radius: 6px;
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--border);
+}
+
+/* Icon buttons inside the input bar (file upload) */
+.icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: var(--btn-bg);
+  color: var(--text);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.15s ease, transform 0.12s ease;
+}
+
+.icon-btn:hover {
+  background: var(--btn-bg-hover);
+  transform: translateY(-1px);
+}
+
+.icon-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.send-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: linear-gradient(135deg, #f0949d, var(--accent-coral));
+  color: #FFFFFF;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  flex-shrink: 0;
+  box-shadow: 0 6px 16px rgba(232, 115, 127, 0.45);
+  transition: background 0.15s ease, transform 0.12s ease, box-shadow 0.15s ease;
+}
+
+.send-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #e8737f, var(--accent-coral-hover));
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(232, 115, 127, 0.55);
+}
+
+.send-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none;
+}

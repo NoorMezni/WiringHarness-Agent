@@ -1,0 +1,44 @@
+:root {
+  --bg: #FFFFFF;
+  --bg-soft: rgba(255, 255, 255, 0.9);
+  --bg-soft-hover: #f2f2f5;
+  --btn-bg: rgba(255, 255, 255, 0.7);
+  --btn-bg-hover: #ffffff;
+  --text: #23263a;
+  --sidebar-bg: #FAFAFA;
+  --border: rgba(35, 38, 58, 0.08);
+
+  --page-gradient: linear-gradient(135deg, #dfe9fb 0%, #eef0fb 35%, #f7eef4 65%, #fbe7ec 100%);
+  --grid-line: rgba(35, 38, 58, 0.05);
+  --card-shadow: 0 10px 35px rgba(45, 55, 100, 0.10), 0 2px 8px rgba(45, 55, 100, 0.06);
+  --card-shadow-soft: 0 6px 20px rgba(45, 55, 100, 0.08);
+  --accent-dark: #2b3245;
+  --accent-dark-hover: #383f56;
+  --accent-blue: #2B63B6;
+  --accent-coral: #e8737f;
+  --accent-coral-hover: #db5f6c;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  background: var(--page-gradient);
+  color: var(--text);
+}
+
+[data-theme="dark"] {
+  --bg: #1a1a1a;
+  --bg-soft: rgba(42, 42, 46, 0.85);
+  --bg-soft-hover: #333338;
+  --btn-bg: rgba(58, 58, 64, 0.8);
+  --btn-bg-hover: #46464e;
+  --text: #EDEDED;
+  --sidebar-bg: #111111;
+  --border: rgba(255, 255, 255, 0.08);
+
+  --page-gradient: linear-gradient(135deg, #14161f 0%, #1a1c28 35%, #201823 65%, #23161c 100%);
+  --grid-line: rgba(255, 255, 255, 0.04);
+  --card-shadow: 0 10px 35px rgba(0, 0, 0, 0.35), 0 2px 8px rgba(0, 0, 0, 0.25);
+  --card-shadow-soft: 0 6px 20px rgba(0, 0, 0, 0.25);
+  --accent-dark: #eceef3;
+  --accent-dark-hover: #ffffff;
+}

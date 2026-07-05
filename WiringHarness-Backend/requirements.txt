@@ -1,0 +1,12 @@
+docling==2.110.0
+fastapi==0.139.0
+google_api_python_client==2.197.0
+httpx==0.28.1
+ollama==0.6.2
+openai==2.44.0
+protobuf==7.35.1
+python-dotenv==1.2.2
+qdrant_client==1.18.0
+uvicorn[standard]==0.34.0
+python-multipart==0.0.32
+google-auth==2.38.0

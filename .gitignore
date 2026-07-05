@@ -1,0 +1,7 @@
+WiringHarness-Backend/venv/
+WiringHarness-Backend/.env
+WiringHarness-Backend/credentials.json
+WiringHarness-Backend/qdrant_storage/
+WiringHarness-Backend/__pycache__/
+*.pyc
+
