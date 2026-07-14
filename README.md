@@ -25,32 +25,6 @@ FastAPI backend (api.py → /agent)
 
 The frontend never talks to the FastAPI backend directly — it talks to the **n8n webhook**, and n8n calls the backend (and other services such as email/upload) from there.
 
-## Repository structure
-
-```
-.
-├── wiring-backend/                       # FastAPI agent backend
-│   ├── api.py                            # FastAPI app, /agent endpoint
-│   ├── agent/
-│   │   ├── loop.py                       # main agent loop (plan → execute → answer)
-│   │   ├── planner.py                    # LLM-based planner (tool selection)
-│   │   └── executor.py                   # tool execution, email, uploads
-│   ├── tools/
-│   │   ├── search_docs.py                # Qdrant semantic search over documents
-│   │   └── search_cases.py               # SQLite troubleshooting case search
-│   ├── ingest_Docling.py                 # Google Drive ingestion + Docling chunking
-│   ├── documents/                        # sample source documents
-│   ├── database/troubleshooting.db       # SQLite troubleshooting cases
-│   ├── qdrant_storage/                   # local Qdrant data (if run locally)
-│   ├── credentials.json                  # Google service account (DO NOT COMMIT)
-│   └── Dockerfile
-├── frontend/                             # React + Vite chat UI
-│   ├── src/services/api.js               # calls the n8n webhook
-│   ├── vite.config.js                    # dev proxy to local n8n (port 5678)
-│   └── .env                              # VITE_API_URL
-└── wiring-harness-agent-Workflow.json    # n8n workflow (import into n8n)
-```
-
 ## Prerequisites
 
 - Python 3.11
@@ -74,7 +48,7 @@ The frontend never talks to the FastAPI backend directly — it talks to the **n
 | `DRIVE_FOLDER_ID` | Google Drive folder ID to ingest documents from |
 | `upload_path` | n8n endpoint the backend forwards uploaded files to |
 | `email_path` | n8n endpoint the backend forwards email requests to |
-| `admin_email` / `ADMIN_EMAIL` | Fallback recipient when no valid address is given ⚠️ *code currently reads both casings in different files — set both, or align them (see Known Issues)* |
+| `admin_email` / `ADMIN_EMAIL` | Fallback recipient when no valid address is given 
 
 Place your Google service account key at `wiring-backend/credentials.json` (already referenced by `ingest_Docling.py`).
 
