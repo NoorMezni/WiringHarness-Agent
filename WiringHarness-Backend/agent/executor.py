@@ -130,7 +130,7 @@ Your role is to produce accurate, field-ready technical answers for engineers an
     return call_qwen(prompt)
 
 
-"""def call_qwen(prompt):
+def call_qwen(prompt):
     try:
         response = ollama.chat(
             model="qwen2.5:7b",
@@ -142,8 +142,9 @@ Your role is to produce accurate, field-ready technical answers for engineers an
     except Exception as e:
         print("Qwen error:", e)
         return "docs"  
+    
+    
 """
-
 def call_qwen(prompt):
     try:
         response = client.chat.completions.create(
@@ -155,4 +156,5 @@ def call_qwen(prompt):
 
     except Exception as e:
         print("Qwen error:", e)
-        return "docs"
+        return "docs" 
+    """
